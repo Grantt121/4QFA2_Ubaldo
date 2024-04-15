@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<label for="row">(enter number between 2 and 10)</label><br>
+<input type="number" id="row">
+by
+<label for="col"></label>
+<input type="number" id="col">
+<br>
+<div id="output"></div>
+<button onclick="generateTable()">Generate Table</button>
+
+<script>
+function generateTable() {
+    var row = parseInt(document.getElementById("row").value);
+    var col = parseInt(document.getElementById("col").value);
+    var output = document.getElementById("output");
+    
+    if (isNaN(row) || isNaN(col) || row < 2 || row > 10 || col < 2 || col > 10) {
+        alert("Please enter valid numbers between 2 and 10.");
+        return;
+    }
+    output.innerHTML = "";
+    var table = "<table border=1>";
+    for (var r = 1; r <= row; r++) {
+        table += "<br>";
+        for (var c = 1; c <= col; c++) {
+            table += "<td>" + (r * c) + "</td>";
+        }
+        table += "</tr>";
+    }
+    table += "</table>";
+    output.innerHTML = table;
+}
+</script>
+</body>
+</html>
